@@ -26,7 +26,7 @@ function getOneOfSmallMultiplesSpec(option: SpecOption): GoslingSpec {
                 tracks: [
                     {
                         data: {
-                            url: 'https://raw.githubusercontent.com/sehilyi/gemini-datasets/master/data/UCSC.HG38.Human.CytoBandIdeogram.csv',
+                            url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/canine_cytoband_for_gistic_order.txt',
                             type: 'csv',
                             chromosomeField: 'Chromosome',
                             genomicFields: ['chromStart', 'chromEnd']
@@ -58,8 +58,24 @@ function getOneOfSmallMultiplesSpec(option: SpecOption): GoslingSpec {
                                 'chr20',
                                 'chr21',
                                 'chr22',
-                                'chrX',
-                                'chrY'
+                                'chr23',
+                                'chr24',
+                                'chr25',
+                                'chr26',
+                                'chr27',
+                                'chr28',
+                                'chr29',
+                                'chr30',
+                                'chr31',
+                                'chr32',
+                                'chr33',
+                                'chr34',
+                                'chr35',
+                                'chr36',
+                                'chr37',
+                                'chr38',
+                                'chrMT',
+                                'chrX'
                             ],
                             range: ['#F6F6F6', 'lightgray']
                         },

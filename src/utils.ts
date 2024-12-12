@@ -53,6 +53,48 @@ export const CHROM_SIZE_HG19 = {
     chrM: 16571
 };
 
+export const CHROM_SIZE_CF3 = {
+    chr1: 122678785,
+    chr2: 85426708,
+    chr3: 91889043,
+    chr4: 88276631,
+    chr5: 88915250,
+    chr6: 77573801,
+    chr7: 80974532,
+    chr8: 74330416,
+    chr9: 61074082,
+    chr10: 69331447,
+    chr11: 74389097,
+    chr12: 72498081,
+    chr13: 63241923,
+    chr14: 60966679,
+    chr15: 64190966,
+    chr16: 59632846,
+    chr17: 64289059,
+    chr18: 55844845,
+    chr19: 53741614,
+    chr20: 58134056,
+    chr21: 50858623,
+    chr22: 61439934,
+    chr23: 52294480,
+    chr24: 47698779,
+    chr25: 51628933,
+    chr26: 38964690,
+    chr27: 45876710,
+    chr28: 41182112,
+    chr29: 41845238,
+    chr30: 40214260,
+    chr31: 39895921,
+    chr32: 38810281,
+    chr33: 31377067,
+    chr34: 42124431,
+    chr35: 26524999,
+    chr36: 30810995,
+    chr37: 30902991,
+    chr38: 23914537,
+    chrMT: 16727,
+    chrX: 123869142
+};
 function getChromInterval(chromSize: { [k: string]: number }) {
     const interval: { [k: string]: [number, number] } = {};
 
@@ -64,10 +106,8 @@ function getChromInterval(chromSize: { [k: string]: number }) {
     return interval;
 }
 
-export function getRelativeGenomicPosition(absPos: number, assembly: 'hg38' | 'hg19') {
-    const [chromosome, absInterval] = Object.entries(
-        getChromInterval(assembly === 'hg19' ? CHROM_SIZE_HG19 : CHROM_SIZE_HG38)
-    ).find(d => {
+export function getRelativeGenomicPosition(absPos: number) {
+    const [chromosome, absInterval] = Object.entries(getChromInterval(CHROM_SIZE_CF3)).find(d => {
         const [start, end] = d[1];
         return start <= absPos && absPos < end;
     }) ?? [null, null];

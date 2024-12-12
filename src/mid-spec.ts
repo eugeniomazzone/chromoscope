@@ -33,10 +33,7 @@ export default function getMidView(option: SpecOption): View[] {
                     id: `${id}-mid-ideogram`,
                     alignment: 'overlay',
                     data: {
-                        url:
-                            assembly === 'hg38'
-                                ? 'https://raw.githubusercontent.com/sehilyi/gemini-datasets/master/data/UCSC.HG38.Human.CytoBandIdeogram.csv'
-                                : 'https://raw.githubusercontent.com/sehilyi/gemini-datasets/master/data/UCSC.HG19.Human.CytoBandIdeogram.csv',
+                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/canine_cytoband_for_gistic_order.txt',
                         type: 'csv',
                         chromosomeField: 'Chromosome',
                         genomicFields: ['chromStart', 'chromEnd']
@@ -88,11 +85,7 @@ export default function getMidView(option: SpecOption): View[] {
                     title: '  Gene Annotation',
                     template: 'gene',
                     data: {
-                        url:
-                            assembly === 'hg19'
-                                ? // TODO: change to gosling's one
-                                  'https://server.gosling-lang.org/api/v1/tileset_info/?d=gene-annotation-hg19'
-                                : 'https://server.gosling-lang.org/api/v1/tileset_info/?d=gene-annotation',
+                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-annotation-cf3',
                         type: 'beddb',
                         genomicFields: [
                             { index: 1, name: 'start' },
