@@ -1,0 +1,10 @@
+{
+    "id": "SRR4037994",
+    "cancer": "Canine",
+    "assembly": "hg19",
+    "sv": "http://127.0.0.1:8080/SRR4037994_SV.tsv",
+    "cnv": "http://127.0.0.1:8080/SRR4037994_CNA.tsv",
+    "driver": "http://127.0.0.1:8080/SRR4037994_Driver.tsv",
+    "vcf": "http://127.0.0.1:8080/SRR4037994_SNP.vcf.gz",
+    "vcfIndex": "http://127.0.0.1:8080/SRR4037994_SNP.vcf.gz.tbi"
+}
