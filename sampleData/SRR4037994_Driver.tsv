@@ -1,5 +1,5 @@
 chr	pos	ref	alt	gene	category	protein_mutation	biallelic
-chr12	47051483	G	T	ORC3	mutational	p.E27X	No
-chr17	49028793	C	T	TET3	mutational	p.E280K	Yes
-chr19	15328617	C	A	FAT4	mutational	p.Q1143H	No
-chr24	30284776	T	A	PTPRT	mutational	p.P557P	Yes
+chr12	47051483	G	T	ORC3	mutational	p.E27X	no
+chr17	49028793	C	T	TET3	mutational	p.E280K	yes
+chr19	15328617	C	A	FAT4	mutational	p.Q1143H	no
+chr24	30284776	T	A	PTPRT	mutational	p.P557P	yes
