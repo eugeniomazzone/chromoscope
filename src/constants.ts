@@ -33,8 +33,24 @@ export const CHROMOSOMES = [
     'chr20',
     'chr21',
     'chr22',
-    'chrX',
-    'chrY'
+    'chr23',
+    'chr24',
+    'chr25',
+    'chr26',
+    'chr27',
+    'chr28',
+    'chr29',
+    'chr30',
+    'chr31',
+    'chr32',
+    'chr33',
+    'chr34',
+    'chr35',
+    'chr36',
+    'chr37',
+    'chr38',
+    'chrMT',
+    'chrX'
 ];
 
 export const THEME: ThemeDeep = {

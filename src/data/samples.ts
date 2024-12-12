@@ -85,10 +85,12 @@ const samples: SampleType[] = [
         ],
         sv: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SV.tsv',
         cnv: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_CNA.tsv',
-        driver: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_Driver.tsv',
+        drivers:
+            'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_Driver.tsv',
         vcf: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SNP.vcf.gz',
         vcfIndex:
             'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SNP.vcf.gz.tbi',
+        cnFields: ['total_cn', 'major_cn', 'minor_cn'],
         note: 'Canine Sample'
     },
     {
