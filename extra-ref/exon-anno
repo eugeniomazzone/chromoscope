@@ -1,3 +1,4 @@
+chr	start	end	gene	strand	type
 chr1	5070924	5071085	CYB5A	+	exon
 chr1	5098788	5098917	CYB5A	+	exon
 chr1	5100771	5100801	CYB5A	+	exon

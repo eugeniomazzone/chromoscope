@@ -85,20 +85,13 @@ export default function getMidView(option: SpecOption): View[] {
                     title: '  Gene Annotation',
                     template: 'gene',
                     data: {
-                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-annotation-canFam3.json',
-                        type: 'beddb',
-                        genomicFields: [
-                            { index: 1, name: 'start' },
-                            { index: 2, name: 'end' }
-                        ],
-                        valueFields: [
-                            { index: 5, name: 'strand', type: 'nominal' },
-                            { index: 3, name: 'name', type: 'nominal' }
-                        ],
-                        exonIntervalFields: [
-                            { index: 12, name: 'start' },
-                            { index: 13, name: 'end' }
-                        ]
+                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/exon-anno',
+                        type: 'csv',
+                        separator: '\t',
+                        chromosomeField: 'chr',
+                        genomicFields: ['start', 'end'],
+                        valueFields: ['strand', 'gene'],
+                        exonIntervalFields: ['start', 'end']
                     },
                     encoding: {
                         startPosition: { field: 'start' },
