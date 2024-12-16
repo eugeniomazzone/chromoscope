@@ -85,7 +85,7 @@ export default function getMidView(option: SpecOption): View[] {
                     title: '  Gene Annotation',
                     template: 'gene',
                     data: {
-                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-annotation-cf3',
+                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-annotation-canFam3.json',
                         type: 'beddb',
                         genomicFields: [
                             { index: 1, name: 'start' },
