@@ -81,17 +81,17 @@ export default function getMidView(option: SpecOption): View[] {
                 tracks.driver(id, driversToTsvUrl(drivers), width, 40, 'mid'),
                 tracks.boundary('driver', 'mid'),
                 //tracks.geneannotation('gene', width, 40, 'mid'),
-                {
+/*                 {
                     id: `${id}-mid-gene2`,
                     title: '  Gene Annotation',
                     template: 'gene',
                     data: {
-                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/exon-anno',
+                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-anno',
                         type: 'csv',
                         separator: '\t',
                         chromosomeField: 'chr',
                         genomicFields: ['start', 'end'],
-                        valueFields: ['strand', 'gene'],
+                        valueFields: ['strand', 'gene', 'type'],
                         exonIntervalFields: ['start', 'end']
                     },
                     encoding: {
@@ -115,6 +115,68 @@ export default function getMidView(option: SpecOption): View[] {
                     ],
                     width,
                     height: 60
+                }, */
+                {
+                    title: '  Gene Annotation',
+                    id: `${id}-mid-gene2`,
+                    alignment: 'overlay',
+                    data: {
+                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-anno',
+                        type: 'csv',
+                        separator: '\t',
+                        chromosomeField: 'chr',
+                        genomicFields: ['start', 'end'],
+                        valueFields: ['strand', 'gene', 'type'],
+                    },
+                    tracks: [
+                        {
+                            mark: 'rect',
+                            dataTransform: [
+                                { type: 'filter', field: 'type', oneOf: ['cds'] }
+                            ]
+                        },
+                        {
+                            mark: 'rect',
+                            dataTransform: [
+                                { type: 'filter', field: 'type', oneOf: ['exon'] },
+                                { type: 'filter', field: 'strand', include: '+' }
+                            ]
+                        },
+                        {
+                            mark: 'rect',
+                            dataTransform: [
+                                { type: 'filter', field: 'type', oneOf: ['exon'] },
+                                { type: 'filter', field: 'strand', include: '-' }
+                            ]
+                        }
+                    ],
+                    color: {
+                        field: 'strand',
+                        type: 'nominal',
+                        domain: ['+', '-'],
+                        range: ['red', 'blue']
+                    },
+                    tooltip: [
+                        { field: 'gene', type: 'nominal' },
+                        { field: 'strand', type: 'nominal' }
+                    ],
+                    size: {
+                        field: 'type',
+                        type: 'nominal',
+                        domain: ['exon', 'cds'], 
+                        range: [20, 10] 
+                    },
+                    y: {
+                        field: 'strand', 
+                        type: 'nominal', 
+                        domain: ['-', '+'],  
+                        range: [15, 45]
+                    },
+                    x: { field: 'start', type: 'genomic' },
+                    xe: { field: 'end', type: 'genomic' },
+                    strokeWidth: { value: 0 },
+                    width,
+                    height: 50
                 },
                 ...(!vcf
                     ? []
