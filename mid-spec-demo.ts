@@ -79,10 +79,10 @@ export default function getMidView(option: SpecOption): View[] {
                     height: 18
                 },
                 tracks.driver(id, driversToTsvUrl(drivers), width, 40, 'mid'),
+                tracks.geneannotation('gene', width, 40, 'mid'),
                 tracks.boundary('driver', 'mid'),
-                //tracks.geneannotation('gene', width, 40, 'mid'),
                 {
-                    id: `${id}-mid-gene2`,
+                    id: `${id}-mid-gene`,
                     title: '  Gene Annotation',
                     template: 'gene',
                     data: {
@@ -94,24 +94,83 @@ export default function getMidView(option: SpecOption): View[] {
                         valueFields: ['strand', 'gene'],
                         exonIntervalFields: ['start', 'end']
                     },
-                    encoding: {
-                        startPosition: { field: 'start' },
-                        endPosition: { field: 'end' },
-                        strandColor: { field: 'strand', range: ['red', 'blue'] },
-                        strandRow: { field: 'strand' },
-                        opacity: { value: 0.4 },
-                        geneHeight: { value: 60 / 3.0 },
-                        geneLabel: { field: 'gene' },
-                        geneLabelFontSize: { value: 60 / 3.0 },
-                        geneLabelColor: { field: 'strand', range: ['black'] },
-                        geneLabelStroke: { value: 'white' },
-                        geneLabelStrokeThickness: { value: 4 },
-                        geneLabelOpacity: { value: 1 },
-                        type: { field: 'type' }
+                    tracks: [
+                        {
+                        dataTransform: [
+                            {type: "filter", field: "type", oneOf: ["gene"]},
+                            {type: "filter", field: "strand", oneOf: ["+"]}
+                        ],
+                        mark: "text",
+                        text: {field: "name", type: "nominal"},
+                        x: {field: "start", type: "genomic"},
+                        xe: {field: "end", type: "genomic"},
+                        size: {value: 8},
+                        style: {textFontSize: 8, dy: -12}
+                        },
+                        {
+                        dataTransform: [
+                            {type: "filter", field: "type", oneOf: ["gene"]},
+                            {type: "filter", field: "strand", oneOf: ["-"]}
+                        ],
+                        mark: "text",
+                        text: {field: "name", type: "nominal"},
+                        x: {field: "start", type: "genomic"},
+                        xe: {field: "end", type: "genomic"},
+                        size: {value: 8},
+                        style: {textFontSize: 8, dy: 10}
+                        },
+                        {
+                        dataTransform: [
+                            {type: "filter", field: "type", oneOf: ["gene"]},
+                            {type: "filter", field: "strand", oneOf: ["+"]}
+                        ],
+                        mark: "rect",
+                        x: {field: "end", type: "genomic"},
+                        size: {value: 7}
+                        },
+                        {
+                        dataTransform: [
+                            {type: "filter", field: "type", oneOf: ["gene"]},
+                            {type: "filter", field: "strand", oneOf: ["-"]}
+                        ],
+                        mark: "rect",
+                        x: {field: "start", type: "genomic"},
+                        size: {value: 7}
+                        },
+                        {
+                        dataTransform: [
+                            {type: "filter", field: "type", oneOf: ["exon"]}
+                        ],
+                        mark: "rect",
+                        x: {field: "start", type: "genomic"},
+                        xe: {field: "end", type: "genomic"},
+                        size: {value: 14}
+                        },
+                        {
+                        dataTransform: [
+                            {type: "filter", field: "type", oneOf: ["gene"]}
+                        ],
+                        mark: "rule",
+                        x: {field: "start", type: "genomic"},
+                        xe: {field: "end", type: "genomic"},
+                        strokeWidth: {"value": 3}
+                        }
+                    ],
+                    row: {field: "strand", type: "nominal", domain: ["+", "-"]},
+                    color: {
+                        field: "strand",
+                        type: "nominal",
+                        domain: ["+", "-"],
+                        range: ["#012DB8", "#BE1E2C"]
                     },
-                    tooltip: [
-                        { field: 'gene', type: 'nominal' },
-                        { field: 'strand', type: 'nominal' }
+                    visibility: [
+                        {
+                        operation: "less-than",
+                        measure: "width",
+                        threshold: "|xe-x|",
+                        transitionPadding: 10,
+                        target: "mark"
+                        }
                     ],
                     width,
                     height: 60
@@ -129,6 +188,27 @@ export default function getMidView(option: SpecOption): View[] {
                 tracks.loh(id, cnv, width, 20, 'mid', cnFields),
                 tracks.boundary('loh', 'mid'),
                 tracks.sv(id, sv, width, 250, 'mid', selectedSvId)
+                // {
+                //     id: `${id}-${'mid'}-sv`,
+                //     data: {
+                //         type: 'json',
+                //         values: [
+                //             { c: 'chr1', p1: 1, p2: 4000000000, v: 250 / 4 },
+                //             { c: 'chr1', p1: 1, p2: 4000000000, v: (250 / 4) * 2 },
+                //             { c: 'chr1', p1: 1, p2: 4000000000, v: (250 / 4) * 3 }
+                //         ],
+                //         chromosomeField: 'c',
+                //         genomicFields: ['p1', 'p2']
+                //     },
+                //     mark: 'rule',
+                //     x: { field: 'p1', type: 'genomic' },
+                //     xe: { field: 'p2', type: 'genomic' },
+                //     y: { field: 'v', type: 'quantitative', domain: [0, 250], axis: 'none' },
+                //     strokeWidth: { value: 0.5 },
+                //     color: { value: '#E3E3E3' },
+                //     width,
+                //     height: 250
+                // },
             ]
         }
     ];
