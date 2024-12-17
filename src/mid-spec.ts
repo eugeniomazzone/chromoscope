@@ -129,6 +129,15 @@ export default function getMidView(option: SpecOption): View[] {
                         valueFields: ['strand', 'gene', 'type'],
                     },
                     tracks: [
+                        /* {
+                            mark: 'text',
+                            x: { field: 'start', type: 'genomic' },
+                            y: 60,
+                            text: { field: 'gene', type: 'nominal' },
+                            dataTransform: [
+                                { type: 'filter', field: 'type', oneOf: ['cds'] }
+                            ]
+                        }, */
                         {
                             mark: 'rect',
                             dataTransform: [
@@ -170,13 +179,13 @@ export default function getMidView(option: SpecOption): View[] {
                         field: 'strand', 
                         type: 'nominal', 
                         domain: ['-', '+'],  
-                        range: [15, 45]
+                        range: [15, 55]
                     },
                     x: { field: 'start', type: 'genomic' },
                     xe: { field: 'end', type: 'genomic' },
                     strokeWidth: { value: 0 },
                     width,
-                    height: 50
+                    height: 70
                 },
                 ...(!vcf
                     ? []
