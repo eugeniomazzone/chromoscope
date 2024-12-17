@@ -126,7 +126,7 @@ export default function getMidView(option: SpecOption): View[] {
                         separator: '\t',
                         chromosomeField: 'chr',
                         genomicFields: ['start', 'end'],
-                        valueFields: ['strand', 'gene', 'type'],
+                        valueFields: ['strand', 'gene', 'type','exon_number'],
                     },
                     tracks: [
                         /* {
@@ -167,7 +167,9 @@ export default function getMidView(option: SpecOption): View[] {
                     },
                     tooltip: [
                         { field: 'gene', type: 'nominal' },
-                        { field: 'strand', type: 'nominal' }
+                        { field: 'strand', type: 'nominal' },
+                        { field: 'type', type: 'nominal' },
+                        { field: 'exon_number', type: 'nominal' }
                     ],
                     size: {
                         field: 'type',
