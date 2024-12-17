@@ -138,12 +138,7 @@ export default function getMidView(option: SpecOption): View[] {
                                 { type: 'filter', field: 'type', oneOf: ['cds'] }
                             ]
                         }, */
-                        {
-                            mark: 'rect',
-                            dataTransform: [
-                                { type: 'filter', field: 'type', oneOf: ['cds'] }
-                            ]
-                        },
+
                         {
                             mark: 'rect',
                             dataTransform: [
@@ -157,7 +152,13 @@ export default function getMidView(option: SpecOption): View[] {
                                 { type: 'filter', field: 'type', oneOf: ['exon'] },
                                 { type: 'filter', field: 'strand', include: '-' }
                             ]
-                        }
+                        },
+                        {
+                            mark: 'rect',
+                            dataTransform: [
+                                { type: 'filter', field: 'type', oneOf: ['intron'] }
+                            ]
+                        },
                     ],
                     color: {
                         field: 'strand',
@@ -174,14 +175,14 @@ export default function getMidView(option: SpecOption): View[] {
                     size: {
                         field: 'type',
                         type: 'nominal',
-                        domain: ['exon', 'cds'], 
-                        range: [20, 10] 
+                        domain: ['intron', 'exon'], 
+                        range: [10, 20] 
                     },
                     y: {
                         field: 'strand', 
                         type: 'nominal', 
                         domain: ['-', '+'],  
-                        range: [15, 55]
+                        range: [15, 65]
                     },
                     x: { field: 'start', type: 'genomic' },
                     xe: { field: 'end', type: 'genomic' },
