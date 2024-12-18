@@ -81,41 +81,6 @@ export default function getMidView(option: SpecOption): View[] {
                 tracks.driver(id, driversToTsvUrl(drivers), width, 40, 'mid'),
                 tracks.boundary('driver', 'mid'),
                 //tracks.geneannotation('gene', width, 40, 'mid'),
-/*                 {
-                    id: `${id}-mid-gene2`,
-                    title: '  Gene Annotation',
-                    template: 'gene',
-                    data: {
-                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-anno',
-                        type: 'csv',
-                        separator: '\t',
-                        chromosomeField: 'chr',
-                        genomicFields: ['start', 'end'],
-                        valueFields: ['strand', 'gene', 'type'],
-                        exonIntervalFields: ['start', 'end']
-                    },
-                    encoding: {
-                        startPosition: { field: 'start' },
-                        endPosition: { field: 'end' },
-                        strandColor: { field: 'strand', range: ['red', 'blue'] },
-                        strandRow: { field: 'strand' },
-                        opacity: { value: 0.4 },
-                        geneHeight: { value: 60 / 3.0 },
-                        geneLabel: { field: 'gene' },
-                        geneLabelFontSize: { value: 60 / 3.0 },
-                        geneLabelColor: { field: 'strand', range: ['black'] },
-                        geneLabelStroke: { value: 'white' },
-                        geneLabelStrokeThickness: { value: 4 },
-                        geneLabelOpacity: { value: 1 },
-                        type: { field: 'type' }
-                    },
-                    tooltip: [
-                        { field: 'gene', type: 'nominal' },
-                        { field: 'strand', type: 'nominal' }
-                    ],
-                    width,
-                    height: 60
-                }, */
                 {
                     title: '  Gene Annotation',
                     id: `${id}-mid-gene2`,
@@ -129,36 +94,66 @@ export default function getMidView(option: SpecOption): View[] {
                         valueFields: ['strand', 'gene', 'type','exon_number'],
                     },
                     tracks: [
-                        /* {
-                            mark: 'text',
-                            x: { field: 'start', type: 'genomic' },
-                            y: 60,
-                            text: { field: 'gene', type: 'nominal' },
-                            dataTransform: [
-                                { type: 'filter', field: 'type', oneOf: ['cds'] }
-                            ]
-                        }, */
-
-                        {
-                            mark: 'rect',
+ /*                        {
+                            //size: 20,
+                            mark: 'rect', 
                             dataTransform: [
                                 { type: 'filter', field: 'type', oneOf: ['exon'] },
                                 { type: 'filter', field: 'strand', include: '+' }
-                            ]
-                        },
+                            ],
+                            y: 65,
+                        }, */
                         {
+                            //size: 20,
                             mark: 'rect',
                             dataTransform: [
                                 { type: 'filter', field: 'type', oneOf: ['exon'] },
-                                { type: 'filter', field: 'strand', include: '-' }
-                            ]
+                            ],
+                            y: {
+                                field: 'strand', 
+                                type: 'nominal', 
+                                domain: ['-', '+'],  
+                                range: [15, 65]
+                            },
                         },
                         {
+                            // size: 10,
                             mark: 'rect',
                             dataTransform: [
                                 { type: 'filter', field: 'type', oneOf: ['intron'] }
-                            ]
+                            ],
+                            y: {
+                                field: 'strand', 
+                                type: 'nominal', 
+                                domain: ['-', '+'],  
+                                range: [15, 65]
+                            },
                         },
+                        {
+                            mark: 'text',
+                            text: { field: 'gene', type: 'nominal' },
+                            color: { value: 'black' },
+                            row: { field: 'row', type: 'nominal' },
+                            style: { textFontWeight: 'normal' },
+                            dataTransform: [
+                                { type: 'filter', field: 'type', oneOf: ['intron'] }
+                            ],
+                            y: {
+                                field: 'strand', 
+                                type: 'nominal', 
+                                domain: ['-', '+'],  
+                                range: [25, 85]
+                            },
+                            visibility: [
+                                {
+                                    operation: 'less-than',
+                                    measure: 'width',
+                                    threshold: '|xe-x|',
+                                    transitionPadding: 30,
+                                    target: 'mark'
+                                },
+                            ]
+                        }
                     ],
                     color: {
                         field: 'strand',
@@ -177,12 +172,6 @@ export default function getMidView(option: SpecOption): View[] {
                         type: 'nominal',
                         domain: ['intron', 'exon'], 
                         range: [10, 20] 
-                    },
-                    y: {
-                        field: 'strand', 
-                        type: 'nominal', 
-                        domain: ['-', '+'],  
-                        range: [15, 65]
                     },
                     x: { field: 'start', type: 'genomic' },
                     xe: { field: 'end', type: 'genomic' },

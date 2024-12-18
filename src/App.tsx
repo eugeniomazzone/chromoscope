@@ -459,7 +459,7 @@ function App(props: RouteComponentProps) {
                             </span>
                         </>
                     )}
-                    <span className="tag-assembly">{d.assembly ?? 'hg38'}</span>
+                    <span className="tag-assembly">{d.assemblyName ?? 'hg38'}</span>
                 </div>
                 <div className="tag-parent">
                     <div className={'tag-sv'}>{AvailabilityIcon(true)}SV</div>
