@@ -13,6 +13,4 @@ COPY --from=node /usr/local/bin /usr/local/bin
 RUN node -v
 RUN npm install http-server -g
 
-COPY $pwd/sampleData /data
-
-CMD ["http-server", "/data/", "--cors -c-1"]
+#CMD ["http-server", "/data/", "--cors -c-1"]
