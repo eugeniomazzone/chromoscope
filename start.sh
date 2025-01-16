@@ -2,7 +2,7 @@
 
 sudo docker run --rm -dp 3000:3000 --name chromo chromoscope:0.1
 sudo docker run --rm -dp 8080:8080 -i --name http -v $(pwd)/sampleData:/data http:0.1
-sudo docker exec -d http http-server /data/ --cors -c-1
+sudo docker exec -d http http-server /data/ --cors -c-1 -p=8080
 
 echo "Demo app at: http://127.0.0.1:3000/app/"
 echo "Demo data at: http://127.0.0.1:8080/"
