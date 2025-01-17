@@ -33,8 +33,10 @@ export default function getMidView(option: SpecOption): View[] {
                     id: `${id}-mid-ideogram`,
                     alignment: 'overlay',
                     data: {
-                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/canine_cytoband_for_gistic_order.txt',
-                        type: 'csv',
+                        url:
+                            assembly === 'hg38'
+                                ? 'https://raw.githubusercontent.com/sehilyi/gemini-datasets/master/data/UCSC.HG38.Human.CytoBandIdeogram.csv'
+                                : 'https://raw.githubusercontent.com/sehilyi/gemini-datasets/master/data/UCSC.HG19.Human.CytoBandIdeogram.csv',                        type: 'csv',
                         chromosomeField: 'Chromosome',
                         genomicFields: ['chromStart', 'chromEnd']
                     },
@@ -80,104 +82,51 @@ export default function getMidView(option: SpecOption): View[] {
                 },
                 tracks.driver(id, driversToTsvUrl(drivers), width, 40, 'mid'),
                 tracks.boundary('driver', 'mid'),
-                //tracks.geneannotation('gene', width, 40, 'mid'),
                 {
+                    id: `${id}-mid-gene`,
                     title: '  Gene Annotation',
-                    id: `${id}-mid-gene2`,
-                    alignment: 'overlay',
+                    template: 'gene',
                     data: {
-                        url: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/extra-ref/gene-anno',
-                        type: 'csv',
-                        separator: '\t',
-                        chromosomeField: 'chr',
-                        genomicFields: ['start', 'end'],
-                        valueFields: ['strand', 'gene', 'type','exon_number'],
-                    },
-                    tracks: [
- /*                        {
-                            //size: 20,
-                            mark: 'rect', 
-                            dataTransform: [
-                                { type: 'filter', field: 'type', oneOf: ['exon'] },
-                                { type: 'filter', field: 'strand', include: '+' }
+                            url:
+                                assembly === 'hg19'
+                                    ? // TODO: change to gosling's one
+                                        'https://server.gosling-lang.org/api/v1/tileset_info/?d=gene-annotation-hg19'
+                                    : 'https://server.gosling-lang.org/api/v1/tileset_info/?d=gene-annotation',
+                            type: 'beddb',
+                            genomicFields: [
+                                { index: 1, name: 'start' },
+                                { index: 2, name: 'end' }
                             ],
-                            y: 65,
-                        }, */
-                        {
-                            //size: 20,
-                            mark: 'rect',
-                            dataTransform: [
-                                { type: 'filter', field: 'type', oneOf: ['exon'] },
+                            valueFields: [
+                                { index: 5, name: 'strand', type: 'nominal' },
+                                { index: 3, name: 'name', type: 'nominal' }
                             ],
-                            y: {
-                                field: 'strand', 
-                                type: 'nominal', 
-                                domain: ['-', '+'],  
-                                range: [15, 65]
-                            },
+                            exonIntervalFields: [
+                                { index: 12, name: 'start' },
+                                { index: 13, name: 'end' }
+                            ]                    
                         },
-                        {
-                            // size: 10,
-                            mark: 'rect',
-                            dataTransform: [
-                                { type: 'filter', field: 'type', oneOf: ['intron'] }
-                            ],
-                            y: {
-                                field: 'strand', 
-                                type: 'nominal', 
-                                domain: ['-', '+'],  
-                                range: [15, 65]
-                            },
-                        },
-                        {
-                            mark: 'text',
-                            text: { field: 'gene', type: 'nominal' },
-                            color: { value: 'black' },
-                            row: { field: 'row', type: 'nominal' },
-                            style: { textFontWeight: 'normal' },
-                            dataTransform: [
-                                { type: 'filter', field: 'type', oneOf: ['intron'] }
-                            ],
-                            y: {
-                                field: 'strand', 
-                                type: 'nominal', 
-                                domain: ['-', '+'],  
-                                range: [25, 85]
-                            },
-                            visibility: [
-                                {
-                                    operation: 'less-than',
-                                    measure: 'width',
-                                    threshold: '|xe-x|',
-                                    transitionPadding: 30,
-                                    target: 'mark'
-                                },
-                            ]
-                        }
-                    ],
-                    color: {
-                        field: 'strand',
-                        type: 'nominal',
-                        domain: ['+', '-'],
-                        range: ['red', 'blue']
+                        encoding: {
+                            startPosition: { field: 'start' },
+                            endPosition: { field: 'end' },
+                            strandColor: { field: 'strand', range: ['gray'] },
+                            strandRow: { field: 'strand' },
+                            opacity: { value: 0.4 },
+                            geneHeight: { value: 60 / 3.0 },
+                            geneLabel: { field: 'name' },
+                            geneLabelFontSize: { value: 60 / 3.0 },
+                            geneLabelColor: { field: 'strand', range: ['black'] },
+                            geneLabelStroke: { value: 'white' },
+                            geneLabelStrokeThickness: { value: 4 },
+                            geneLabelOpacity: { value: 1 },
+                            type: { field: 'type' }
                     },
                     tooltip: [
-                        { field: 'gene', type: 'nominal' },
-                        { field: 'strand', type: 'nominal' },
-                        { field: 'type', type: 'nominal' },
-                        { field: 'exon_number', type: 'nominal' }
+                        { field: 'name', type: 'nominal' },
+                        { field: 'strand', type: 'nominal' }
                     ],
-                    size: {
-                        field: 'type',
-                        type: 'nominal',
-                        domain: ['intron', 'exon'], 
-                        range: [10, 20] 
-                    },
-                    x: { field: 'start', type: 'genomic' },
-                    xe: { field: 'end', type: 'genomic' },
-                    strokeWidth: { value: 0 },
                     width,
-                    height: 70
+                    height: 60
                 },
                 ...(!vcf
                     ? []

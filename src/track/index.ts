@@ -7,7 +7,6 @@ import sv from './sv';
 import mutation from './mutation';
 import indel from './indel';
 import boundary from './boundary';
-import geneannotation from './geneannotation';
 
 export type TrackMode = 'small' | 'top' | 'mid';
 
@@ -21,5 +20,4 @@ export default {
     mutation,
     indel,
     boundary,
-    geneannotation
 };

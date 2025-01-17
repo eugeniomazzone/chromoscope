@@ -106,8 +106,10 @@ function getChromInterval(chromSize: { [k: string]: number }) {
     return interval;
 }
 
-export function getRelativeGenomicPosition(absPos: number) {
-    const [chromosome, absInterval] = Object.entries(getChromInterval(CHROM_SIZE_CF3)).find(d => {
+export function getRelativeGenomicPosition(absPos: number, assembly: 'hg38' | 'hg19') {
+    const [chromosome, absInterval] = Object.entries(
+        getChromInterval(assembly === 'hg19' ? CHROM_SIZE_HG19 : CHROM_SIZE_HG38)
+    ).find(d => {
         const [start, end] = d[1];
         return start <= absPos && absPos < end;
     }) ?? [null, null];

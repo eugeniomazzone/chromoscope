@@ -459,7 +459,7 @@ function App(props: RouteComponentProps) {
                             </span>
                         </>
                     )}
-                    <span className="tag-assembly">{d.assemblyName ?? 'hg38'}</span>
+                    <span className="tag-assembly">{d.assembly ?? 'hg38'}</span>
                 </div>
                 <div className="tag-parent">
                     <div className={'tag-sv'}>{AvailabilityIcon(true)}SV</div>
@@ -1239,7 +1239,7 @@ function App(props: RouteComponentProps) {
                                         );
                                     })}
                                 </select>
-                                {/* <div className="gene-search">
+                                <div className="gene-search">
                                     <svg
                                         className="gene-search-icon"
                                         viewBox="0 0 16 16"
@@ -1305,7 +1305,7 @@ function App(props: RouteComponentProps) {
                                             }
                                         }}
                                     />
-                                </div> */}
+                                </div> 
                                 <div className="directional-controls">
                                     <div className="control-group zoom">
                                         <button
