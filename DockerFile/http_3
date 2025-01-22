@@ -11,14 +11,6 @@ COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
 RUN node -v
+RUN npm install http-server -g
 
-RUN npm install -g yarn --force
-RUN yarn -v
-RUN apk add --no-cache git
-
-RUN git clone https://github.com/eugeniomazzone/chromoscope.git
-WORKDIR /chromoscope
-RUN git checkout human
-RUN yarn install
-
-CMD ["yarn","start","--host","--cors","--port", "8080"]
+CMD ["http-server", "/data/", "--cors", "-c-1", "--port", "4000"]
