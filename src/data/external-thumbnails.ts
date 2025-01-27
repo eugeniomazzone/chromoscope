@@ -1,2 +1,1 @@
-export const INTERNAL_SAVED_THUMBNAILS = {
-};
+export const INTERNAL_SAVED_THUMBNAILS = {};

@@ -1,2 +1,1 @@
-export const EXTERNAL_THUMBNAILS = {
-};
+export const EXTERNAL_THUMBNAILS = {};

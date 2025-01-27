@@ -19,5 +19,5 @@ export default {
     sv,
     mutation,
     indel,
-    boundary,
+    boundary
 };

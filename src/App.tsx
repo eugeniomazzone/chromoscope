@@ -1305,7 +1305,7 @@ function App(props: RouteComponentProps) {
                                             }
                                         }}
                                     />
-                                </div> 
+                                </div>
                                 <div className="directional-controls">
                                     <div className="control-group zoom">
                                         <button

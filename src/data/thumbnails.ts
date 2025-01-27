@@ -1,2 +1,1 @@
-export const THUMBNAILS = [
-];
+export const THUMBNAILS = [];
