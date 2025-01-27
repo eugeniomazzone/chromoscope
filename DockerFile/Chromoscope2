@@ -1,0 +1,11 @@
+FROM node:18-alpine
+
+RUN apk add --no-cache git
+
+RUN git clone https://github.com/eugeniomazzone/chromoscope.git
+WORKDIR /chromoscope
+RUN git checkout human
+RUN rm package-lock.json
+
+RUN yarn install
+CMD ["yarn","start","--host","--cors","--port", "8080","--base", "/chromoscope/"]

@@ -81,7 +81,7 @@ function App(props: RouteComponentProps) {
               .split('-')
               .map(d => +d)
         : null;
-    const demoIndex = useRef(+urlParams.get('demoIndex') ?? 0);
+    const demoIndex = useRef(+urlParams.get('demoIndex'));
     const [showSmallMultiples, setShowSmallMultiples] = useState(externalUrl === null);
     const [ready, setReady] = useState(externalUrl === null);
 
