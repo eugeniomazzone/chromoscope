@@ -9,9 +9,9 @@ export default defineConfig({
         include: ['gosling.js']
     },
     server: {
-      port: 8080
+      port: 8080,
+      host: 'localhost-alt/',
       hmr: {
-        host: 'localhost-alt/',
         //protocol: 'https',
         clientPort: 8080
       },
