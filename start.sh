@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo docker run --rm -dp 3000:3000 --name chromo chromoscope:0.1
+sudo docker run --rm -dp 8080:8080 --name chromo chromoscope:0.2
 sudo docker run --rm -dp 8080:8080 -i --name http -v $(pwd)/sampleData:/data http:0.1
 sudo docker exec -d http http-server /data/ --cors -c-1 -p=8080
 

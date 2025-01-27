@@ -1,6 +1,6 @@
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { GoslingComponent, GoslingRef, embed } from 'gosling.js';
-import { debounce, sample } from 'lodash';
+import { debounce } from 'lodash';
 import type { RouteComponentProps } from 'react-router-dom';
 import generateSpec from './main-spec';
 import ErrorBoundary from './error';
@@ -8,7 +8,7 @@ import _allDrivers from './data/driver.json';
 import _customDrivers from './data/driver.custom.json';
 import samples, { SampleType } from './data/samples';
 import getOneOfSmallMultiplesSpec from './small-multiples-spec';
-import { CHROMOSOMES, THEME, WHOLE_CHROMOSOME_STR } from './constants';
+import { CHROMOSOMES, THEME } from './constants';
 import { ICONS } from './icon';
 import './App.css';
 import { INTERNAL_SAVED_THUMBNAILS } from './data/external-thumbnails';

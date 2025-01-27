@@ -21,4 +21,4 @@ WORKDIR /chromoscope
 RUN git checkout human
 RUN yarn install
 
-CMD ["yarn","start","--host","--cors","--port", "8080"]
+CMD ["yarn","start","--host","--cors","--port", "8080","--base", "/chromoscope/"]
