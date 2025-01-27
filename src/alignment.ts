@@ -1,7 +1,7 @@
 import { GoslingSpec } from 'gosling.js';
 import { SpecOption } from './main-spec';
 import defaultEncodings from './default-encoding';
-import { SingleTrack } from 'gosling.js/dist/src/core/gosling.schema';
+import { SingleTrack } from 'gosling.js/dist/src/gosling-schema';
 
 function drawSvReads(option: SpecOption, sv: string): Partial<SingleTrack>[] {
     const { svReads } = option;
