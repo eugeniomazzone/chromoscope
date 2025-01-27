@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+//import reactRefresh from '@vitejs/plugin-react-refresh';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,5 +8,12 @@ export default defineConfig({
     optimizeDeps: {
         include: ['gosling.js']
     },
-    plugins: [reactRefresh()]
+    server: {
+      hmr: {
+        //host: 'yourhost',
+        protocol: 'wss',
+        clientPort: 8080
+      },
+    }
+    //plugins: [reactRefresh()]
 });
