@@ -12,8 +12,9 @@ export default defineConfig({
       port: 8080,
       host: 'localhost-alt/',
       hmr: {
-        //protocol: 'https',
-        clientPort: 8080
+        protocol: 'https',
+	host: "localhost-alt",
+        clientPort: 5000
       },
     }
     //plugins: [reactRefresh()]
