@@ -12,7 +12,7 @@ export default defineConfig({
       port: 8080,
       host: 'localhost-alt/',
       hmr: {
-        protocol: 'https',
+        protocol: 'http',
 	host: "localhost-alt",
         clientPort: 5000
       },

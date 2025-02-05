@@ -1,6 +1,6 @@
 #!/bin/bash
 
-docker run --rm -p 5000:8080 -v $PWD/vite.config.ts:/chromoscope/vite.config.ts --name chromo eugeniom/chromoscope_hg:0.5
+docker run --rm -p 5000:8080 -v $PWD/vite.config.ts:/chromoscope/vite.config.ts --name chromo eugeniom/chromoscope_hg:0.4
 #sudo docker run --rm -dp 8080:8080 -i --name http -v $(pwd)/sampleData:/data http:0.1
 #sudo docker exec -d http http-server /data/ --cors -c-1 -p=8080
 
