@@ -4,9 +4,9 @@ export type SampleType = {
     group: 'default' | 'doga' | 'vcf';
     id: string; // "aliquot ID"
     cancer: string; // cancer type
-    assembly: Assembly; // hg19 or 38
+    assembly?: Assembly; // hg19 or 38
     assemblyName?: string;
-    sv: string; // URL of bedpe
+    sv?: string; // URL of bedpe
     cnv?: string; // URL of txt
     drivers?: { [k: string]: string | number }[] | string;
     bam?: string;
@@ -67,17 +67,17 @@ const canFam3: Assembly = [
 const samples: SampleType[] = [
     {
         group: 'default',
-        id: '0bfd1043-816e-e3e4-e050-11ac0c4860c5', // OV-US-
-        cancer: 'prostate adenocarcinoma',
-        assembly: 'hg19',
-        sv: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.pcawg_consensus_1.6.161116.somatic.sv.bedpe',
-        cnv: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20170119.somatic.cna.txt',
-        vcf: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20160830.somatic.snv_mnv.sorted.vcf.gz',
-        vcfIndex:
-            'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20160830.somatic.snv_mnv.sorted.vcf.gz.tbi',
-        vcf2: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20161006.somatic.indel.sorted.vcf.gz',
-        vcf2Index:
-            'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20161006.somatic.indel.sorted.vcf.gz.tbi'
+        id: '--', // OV-US-
+        cancer: '--',
+        // assembly: 'hg19',
+        // sv: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.pcawg_consensus_1.6.161116.somatic.sv.bedpe',
+        // cnv: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20170119.somatic.cna.txt',
+        // vcf: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20160830.somatic.snv_mnv.sorted.vcf.gz',
+        // vcfIndex:
+        //     'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20160830.somatic.snv_mnv.sorted.vcf.gz.tbi',
+        // vcf2: 'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20161006.somatic.indel.sorted.vcf.gz',
+        // vcf2Index:
+        //     'https://somatic-browser-test.s3.amazonaws.com/cdk12cancers/0bfd1043-816e-e3e4-e050-11ac0c4860c5.consensus.20161006.somatic.indel.sorted.vcf.gz.tbi'
     }
 ];
 

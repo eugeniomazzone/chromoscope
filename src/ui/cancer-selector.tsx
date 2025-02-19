@@ -206,7 +206,7 @@ export default function CancerSelector(props: { onChange: (url: string) => void 
     return (
         <div className="menu-container">
             <div className="menu-title">
-                Load a PCAWG Sample
+                Load Complete Study
                 {/* <span className="menu-icon">
                     <svg width={16} height={16} viewBox={ICONS.BOX_ARROW_UP_RIGHT.viewBox}>
                         {ICONS.BOX_ARROW_UP_RIGHT.path.map(d => <path fill="currentColor" d={d} />)}

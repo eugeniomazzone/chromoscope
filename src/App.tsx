@@ -787,7 +787,7 @@ function App(props: RouteComponentProps) {
                 <div className="sample-label">
                     {!isMinimalMode && (
                         <>
-                            <a className="chromoscope-title" href="./">
+                            <a className="chromoscope-title">
                                 CHROMOSCOPE
                             </a>
                             <a
@@ -1070,7 +1070,7 @@ function App(props: RouteComponentProps) {
                                         }}
                                     />
                                     <HorizontalLine />
-                                    <SampleConfigForm
+                                    {/* <SampleConfigForm
                                         onAdd={config => {
                                             setFilteredSamples([
                                                 {
@@ -1080,7 +1080,7 @@ function App(props: RouteComponentProps) {
                                                 ...filteredSamples
                                             ]);
                                         }}
-                                    />
+                                    /> */}
                                 </div>
                                 <div className="overview-status">{`Total of ${filteredSamples.length} samples loaded`}</div>
                                 <div className="overview-container">{smallOverviewWrapper}</div>
