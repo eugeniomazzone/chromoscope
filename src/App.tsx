@@ -432,7 +432,7 @@ function App(props: RouteComponentProps) {
                     {'' + d.id.slice(0, 20) + (d.id.length >= 20 ? '...' : '')}
                 </div>
                 <div style={{ position: 'relative' }}>
-                    {getThumbnail(d) ? (
+                    {/* {getThumbnail(d) ? (
                         <img src={getThumbnail(d)} style={{ width: `${420 / 2}px`, height: `${420 / 2}px` }} />
                     ) : (
                         // <div style={{ marginLeft: 'calc(50% - 105px - 10px)' }}>
@@ -458,7 +458,7 @@ function App(props: RouteComponentProps) {
                                 {generateThumbnails ? 'Loading...' : 'Thumbnail Missing'}
                             </span>
                         </>
-                    )}
+                    )} */}
                     <span className="tag-assembly">{d.assembly ?? 'hg38'}</span>
                 </div>
                 <div className="tag-parent">
@@ -1037,13 +1037,13 @@ function App(props: RouteComponentProps) {
                                     </svg>
                                     Documentation
                                 </a>
-                                <button
+                                {/* <button
                                     className="thumbnail-generate-button"
                                     onClick={() => setGenerateThumbnails(!generateThumbnails)}
                                     style={{ visibility: doneGeneratingThumbnails ? 'hidden' : 'visible' }}
                                 >
                                     {generateThumbnails ? 'Stop Generating Thumbnails' : 'Generate Missing Thumbnails'}
-                                </button>
+                                </button> */}
                             </div>
                             <div className="overview-root">
                                 <div className="overview-left">
