@@ -1047,7 +1047,7 @@ function App(props: RouteComponentProps) {
                             </div>
                             <div className="overview-root">
                                 <div className="overview-left">
-                                    <CancerSelector
+                                    {/* <CancerSelector
                                         onChange={url => {
                                             fetch(url).then(response =>
                                                 response.text().then(d => {
@@ -1068,7 +1068,7 @@ function App(props: RouteComponentProps) {
                                                 })
                                             );
                                         }}
-                                    />
+                                    /> */}
                                     <HorizontalLine />
                                     {/* <SampleConfigForm
                                         onAdd={config => {
