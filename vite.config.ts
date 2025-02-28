@@ -10,11 +10,11 @@ export default defineConfig({
     },
     server: {
       port: 8080,
-      host: 'localhost-alt/',
+      host: 'localhost',
       hmr: {
         protocol: 'http',
-	host: "localhost-alt",
-        clientPort: 5000
+	host: "localhost",
+        clientPort: 8080
       },
     }
     //plugins: [reactRefresh()]
