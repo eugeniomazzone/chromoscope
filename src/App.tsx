@@ -432,7 +432,7 @@ function App(props: RouteComponentProps) {
                     {'' + d.id.slice(0, 20) + (d.id.length >= 20 ? '...' : '')}
                 </div>
                 <div style={{ position: 'relative' }}>
-                    {getThumbnail(d) ? (
+                    {/* {getThumbnail(d) ? (
                         <img src={getThumbnail(d)} style={{ width: `${420 / 2}px`, height: `${420 / 2}px` }} />
                     ) : (
                         // <div style={{ marginLeft: 'calc(50% - 105px - 10px)' }}>
@@ -458,7 +458,7 @@ function App(props: RouteComponentProps) {
                                 {generateThumbnails ? 'Loading...' : 'Thumbnail Missing'}
                             </span>
                         </>
-                    )}
+                    )} */}
                     <span className="tag-assembly">{d.assemblyName ?? 'hg38'}</span>
                 </div>
                 <div className="tag-parent">
@@ -787,7 +787,7 @@ function App(props: RouteComponentProps) {
                 <div className="sample-label">
                     {!isMinimalMode && (
                         <>
-                            <a className="chromoscope-title" href="./">
+                            <a className="chromoscope-title">
                                 CHROMOSCOPE
                             </a>
                             <a
@@ -957,7 +957,7 @@ function App(props: RouteComponentProps) {
                     {!isMinimalMode && (
                         <div className={'vis-overview-panel ' + (!showSamples ? 'hide' : '')}>
                             <div
-                                className="title"
+                                className="title1"
                                 onClick={e => {
                                     if (e.target === e.currentTarget) setShowSamples(false);
                                 }}
@@ -1037,17 +1037,17 @@ function App(props: RouteComponentProps) {
                                     </svg>
                                     Documentation
                                 </a>
-                                <button
+                                {/* <button
                                     className="thumbnail-generate-button"
                                     onClick={() => setGenerateThumbnails(!generateThumbnails)}
                                     style={{ visibility: doneGeneratingThumbnails ? 'hidden' : 'visible' }}
                                 >
                                     {generateThumbnails ? 'Stop Generating Thumbnails' : 'Generate Missing Thumbnails'}
-                                </button>
+                                </button> */}
                             </div>
                             <div className="overview-root">
                                 <div className="overview-left">
-                                    <CancerSelector
+                                    {/* <CancerSelector
                                         onChange={url => {
                                             fetch(url).then(response =>
                                                 response.text().then(d => {
@@ -1068,9 +1068,9 @@ function App(props: RouteComponentProps) {
                                                 })
                                             );
                                         }}
-                                    />
-                                    <HorizontalLine />
-                                    <SampleConfigForm
+                                    /> */}
+                                    {/* <HorizontalLine /> */}
+                                    {/* <SampleConfigForm
                                         onAdd={config => {
                                             setFilteredSamples([
                                                 {
@@ -1080,7 +1080,7 @@ function App(props: RouteComponentProps) {
                                                 ...filteredSamples
                                             ]);
                                         }}
-                                    />
+                                    /> */}
                                 </div>
                                 <div className="overview-status">{`Total of ${filteredSamples.length} samples loaded`}</div>
                                 <div className="overview-container">{smallOverviewWrapper}</div>

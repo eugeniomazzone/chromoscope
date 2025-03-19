@@ -1,22 +1,21 @@
 import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
+//import reactRefresh from '@vitejs/plugin-react-refresh';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    base: '/chromocope/',
+    base: '/',
     build: { target: 'esnext' },
     optimizeDeps: {
         include: ['gosling.js']
     },
     server: {
       port: 8080,
-      //host: "chromoscope",
-      // protocol: "ws",
+      host: 'localhost',
       hmr: {
+        protocol: 'http',
 	host: "localhost",
-        //protocol: 'ws',
-        clientPort: 8080,
+        clientPort: 8080
       },
-    },
-    plugins: [reactRefresh()]
+    }
+    //plugins: [reactRefresh()]
 });
