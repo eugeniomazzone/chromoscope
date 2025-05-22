@@ -26,19 +26,19 @@ const canFam3: Assembly = [['chr1', 122678785],['chr2', 85426708],['chr3', 91889
 const samples: SampleType[] = [
     {
         group: 'default',
-        id: 'SRR4037994',
-        cancer: 'breast',
+        id: '--',
+        cancer: '--',
         assembly: canFam3,
-        assemblyName: 'canFam3',
-        sv: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SV.tsv',
-        cnv: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_CNA.tsv',
-        drivers:
-            'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_Driver.tsv',
-        vcf: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SNP.vcf.gz',
-        vcfIndex:
-            'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SNP.vcf.gz.tbi',
-        cnFields: ['total_cn', 'major_cn', 'minor_cn'],
-        note: 'Canine Sample'
+        // assemblyName: 'canFam3',
+        // sv: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SV.tsv',
+        // cnv: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_CNA.tsv',
+        // drivers:
+        //     'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_Driver.tsv',
+        // vcf: 'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SNP.vcf.gz',
+        // vcfIndex:
+        //     'https://raw.githubusercontent.com/eugeniomazzone/chromoscope/refs/heads/main/sampleData/SRR4037994_SNP.vcf.gz.tbi',
+        // cnFields: ['total_cn', 'major_cn', 'minor_cn'],
+        // note: 'Canine Sample'
     },
 ];
 
